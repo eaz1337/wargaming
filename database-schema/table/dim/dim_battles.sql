@@ -17,6 +17,7 @@ CREATE INDEX idx_battles_map_id ON dim_battles(map_id);
 CREATE INDEX idx_battles_battle_type_id ON dim_battles(battle_type_id);
 
 COMMENT ON TABLE dim_battles IS 'Table storing metadata for each battle instance. Partitioned by start_time.';
+
 COMMENT ON COLUMN dim_battles.battle_id IS 'Unique identifier for the battle. Part of the composite primary key.';
 COMMENT ON COLUMN dim_battles.start_time IS 'The exact date and time the battle started. This is the PARTITION KEY.';
 COMMENT ON COLUMN dim_battles.duration_seconds IS 'The total duration of the battle in seconds.';
