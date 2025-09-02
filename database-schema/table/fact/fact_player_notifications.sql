@@ -1,14 +1,14 @@
 CREATE TABLE fact_player_notifications (
-    notification_sk BIGSERIAL NOT NULL, -- Surrogate key for each notification instance
-    notification_time TIMESTAMP NOT NULL, -- When the notification was sent/generated (PARTITION KEY)
-    notification_type_id INT NOT NULL,  -- Foreign key to dim_notification_types
-    sender_player_id BIGINT,            -- Player who sent the message (NULL for system notifications)
-    receiver_player_id BIGINT NOT NULL, -- Player who received the message/notification
-    message_content TEXT NOT NULL,      -- The actual content of the message/notification
-    is_read BOOLEAN DEFAULT FALSE,      -- Status: has the player read it?
-    read_time TIMESTAMP,                -- When the player read it (NULL if not read)
+    notification_sk BIGSERIAL NOT NULL, 
+    notification_time TIMESTAMP NOT NULL, 
+    notification_type_id INT NOT NULL,  
+    sender_player_id BIGINT,            
+    receiver_player_id BIGINT NOT NULL, 
+    message_content TEXT NOT NULL,      
+    is_read BOOLEAN DEFAULT FALSE,      
+    read_time TIMESTAMP,                
 
-    PRIMARY KEY (notification_sk, notification_time), -- Composite PK with partition key
+    PRIMARY KEY (notification_sk, notification_time),
 
     FOREIGN KEY (notification_type_id) REFERENCES dim_notification_types(notification_type_id),
     FOREIGN KEY (sender_player_id) REFERENCES dim_players(player_id),
