@@ -5,6 +5,7 @@ CREATE TABLE fact_battle_results (
     vehicle_id INT NOT NULL,
     settings_id INT,
     team_id SMALLINT NOT NULL,
+    kills SMALLINT,
     damage_dealt INT,
     damage_assisted INT,
     damage_received INT,
